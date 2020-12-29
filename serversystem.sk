@@ -1,0 +1,13 @@
+command /hub:
+    trigger:
+        make player execute "/mvtp hub"
+
+
+
+
+command /smp:
+    trigger:
+        make player execute "/mvtp world"
+
+
+    
