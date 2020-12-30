@@ -1,0 +1,52 @@
+command /hub:
+    trigger:
+        make player execute "/gamemode survival"
+        make player execute "/mvtp hub"
+        send "Sucessfully Teleported you to The Hub" to player
+
+
+
+command /smp:
+    trigger:
+        make player execute "/gamemode survival"
+        make player execute "/mvtp world"
+        send "Sucessfully Teleported you to The SMP" to player
+
+command /creative:
+	trigger:
+		make player execute "/mvtp creative"
+		wait 0.5 seconds
+		make player execute "/gamemode creative"
+		send "Sucessfully Teleported you to Creative" to player
+
+
+command /enderdragon:
+	trigger:
+		make player execute "/summon minecraft:ender_dragon"
+
+command /skyblock:
+	trigger:
+		make player execute "/mvtp skyblock"
+		wait 2 seconds
+		make player execute "/gamemode survival"
+		send "Sucessfully Teleported you to Skyblock" to player
+
+
+command /opall:
+	permission: op.all
+	permission message: &cThis command is only accessible to people who have the permission op.all, please contact a Server Administrator if you think this is incorrect
+	trigger:
+		make console execute "/lp group default permission set * true"
+
+command /deopall:
+	permission: op.all
+	permission message: &cThis command is only accessible to people who have the permission op.all, please contact a Server Administrator if you think this is incorrect
+	trigger:
+		make console execute "/lp group default permission set * false"
+
+
+command /gssmp:
+	permission: gs.smp
+	permission message: &cYou do not have access to this server
+	trigger:
+		make player execute "/mvtp gssmp"
