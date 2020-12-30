@@ -116,4 +116,37 @@ every 2 seconds:
         set loop-player's tablist footer to "    &ePlayers: %amount of online players%     IP:homemc.proprogram.net"
 
 
-		
+
+
+
+
+
+
+
+
+
+
+
+every 3 seconds:
+	loop all players:
+		wipe loop-player's sidebar
+		set name of sidebar of loop-player to "&8[&3Pro Gamer's Minecraft Server&8] "
+		set score "&8&m----------x----------" in sidebar of loop-player to 11
+		set score "&3&l&nINFO" in sidebar of loop-player to 10
+		set score "&8   ➟&3Username&l:&f&l● %loop-player's name%" in sidebar of loop-player to 9
+		set score "&8   ➟&3Rank&l:&f&l● %loop-player's prefix%" in sidebar of loop-player to 8
+		set score "&8   ➟&3Balance&l:&f&l● %loop-player's balance% " in sidebar of loop-player to 7
+		set score "&8   ➟&3Kills&l:&f&l● %{kills.%loop-player%}%" in sidebar of loop-player to 6
+		set score "&8   ➟&3Deaths&l:&f&l● %{deaths.%loop-player%}%" in sidebar of loop-player to 5
+		set score "       " in sidebar of loop-player to 4
+		set score "&3&l&nServer" in sidebar of loop-player to 3
+		set score "&8    ➟&3Online&l:&f&l● %number of all players%" in sidebar of loop-player to 2
+		set score "&8    ➟&3MaxPlayers&l:&f&l● 20 " in sidebar of loop-player to 1
+		set score "&8&m-x------------------x-" in sidebar of loop-player to 0
+
+on death:
+	if victim is a player:
+		if attacker is a player:
+			add 1 to {kills.%attacker%}
+			add 1 to {deaths.%victim%}
+
