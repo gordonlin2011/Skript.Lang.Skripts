@@ -50,3 +50,15 @@ command /gssmp:
 	permission message: &cYou do not have access to this server
 	trigger:
 		make player execute "/mvtp gssmp"
+
+
+
+
+command /privatemsg <player> <text>:
+	description: Whisper another player
+	usage: /privatemsg <player> <message>
+	trigger:
+		set {chat.private.reply.%player%} to arg 1
+		set {chat.private.reply.%arg 1%} to player
+		send "&c[MSG] &aTo: %arg 1% &e->&c %arg 2%" to player
+		send "&c[MSG] &eFrom: %player% &e->&c %arg 2%" to arg 1
