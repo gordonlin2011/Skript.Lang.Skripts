@@ -114,3 +114,6 @@ every 2 seconds:
 
         set loop-player's tablist header to "&7&m-&6&m--------&8&l&m]---&r   &e&lThe Pro Gamer Server&f!   &8&l&m---[&6&m--------&7&m-"
         set loop-player's tablist footer to "    &ePlayers: %amount of online players%     IP:homemc.proprogram.net"
+
+
+		
