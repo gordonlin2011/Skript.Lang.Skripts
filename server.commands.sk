@@ -62,3 +62,39 @@ command /privatemsg <player> <text>:
 		set {chat.private.reply.%arg 1%} to player
 		send "&c[MSG] &aTo: %arg 1% &e->&c %arg 2%" to player
 		send "&c[MSG] &eFrom: %player% &e->&c %arg 2%" to arg 1
+
+
+
+
+
+
+command /staffchat [<text>]:
+    aliases: clubmodutilities:staffchat, clubmodutilities:sc, sc
+    trigger:
+        if executor does not have permission "clubmodutilities.command.staffchat":
+            message "&cYou do not have permission to execute this command!"
+        else:   
+            if arg 1 is not set:
+                if {staffchat.%uuid of player%} is set:
+                    delete {staffchat.%uuid of player%}
+                    message "&cYou've exited Staff Chat."
+                else:
+                    set {staffchat.%uuid of player%} to true
+                    message "&aYou've entered Staff Chat."
+            else:
+                message "&b[S] &3[%player's world%] &r%player's displayname%&b: %uncolored arg-1%" to all players where [input has permission "clubmodutilities.staff"]
+            
+on chat:
+    if {staffchat.%uuid of player%} is set:
+        if {permissions.%{rank-player.%uuid of player%}%::*} contains "*" or "clubmodutilities.command.staffchat":
+            cancel event 
+            player command "sc %message%"
+        else:
+            delete {staffchat.%uuid of player%}
+    else:
+        if "%first character of message%" is "##":
+            if message contains "## ":
+                set {_message} to message
+                replace all "## " with "" in {_message}
+                cancel event 
+                player command "sc %{_message}%"
