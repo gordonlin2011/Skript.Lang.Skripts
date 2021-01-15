@@ -70,18 +70,18 @@ command /privatemsg <player> <text>:
 
 command /privatechat [<text>]:
 permission: private.chat
-permission message: You
+permission message: &cYou are not a private chat member, please contact The Server Owner if you think this is incorrect
     trigger:
         else:   
             if arg 1 is not set:
                 if {staffchat.%uuid of player%} is set:
                     delete {staffchat.%uuid of player%}
-                    message "&cYou've exited Staff Chat."
+                    message "&cYou've exited Private Chat."
                 else:
                     set {staffchat.%uuid of player%} to true
-                    message "&aYou've entered Staff Chat."
+                    message "&aYou've entered Private Chat."
             else:
-                message "&b[S] &3[%player's world%] &r%player's displayname%&b: %uncolored arg-1%" to all players where [input has permission "clubmodutilities.staff"]
+                message "&b[S] &3[%player's world%] &r%player's displayname%&b: %uncolored arg-1%" to all players where [input has permission "private.chat"]
             
 on chat:
     if {staffchat.%uuid of player%} is set:
